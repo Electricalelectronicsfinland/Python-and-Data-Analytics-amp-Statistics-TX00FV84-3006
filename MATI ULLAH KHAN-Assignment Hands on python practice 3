@@ -1,0 +1,112 @@
+#Exercise 1: Display Dataset Information
+#Task: Use df.info() to display basic information about the dataset.
+####################################################################
+Solution:
+    df.info()
+#Explanation:
+df.info() provides a concise summary of the DataFrame, including the number of non-null entries in each column, the data types of each column, and memory usage.
+This helps in understanding the structure of the dataset, identifying missing values, and verifying data types.
+
+#Exercise 2: Calculate Minimum and Maximum Values
+#Task: Calculate the minimum and maximum values for the columns: height, weight, ap_hi, and ap_lo.
+##################################################################################################:
+Solution:
+# Minimum values
+min_height = df['height'].min()
+min_weight = df['weight'].min()
+min_ap_hi = df['ap_hi'].min()
+min_ap_lo = df['ap_lo'].min()
+
+# Maximum values
+max_height = df['height'].max()
+max_weight = df['weight'].max()
+max_ap_hi = df['ap_hi'].max()
+max_ap_lo = df['ap_lo'].max()
+
+print("Minimum Values:")
+print(f"Height: {min_height}, Weight: {min_weight}, Systolic BP: {min_ap_hi}, Diastolic BP: {min_ap_lo}")
+print("\nMaximum Values:")
+print(f"Height: {max_height}, Weight: {max_weight}, Systolic BP: {max_ap_hi}, Diastolic BP: {max_ap_lo}")
+
+#Explanation:
+The min() and max() functions are used to compute the smallest and largest values in each specified column.
+#This helps in understanding the range of values for these variables, which is useful for detecting outliers or errors in the data.
+
+#Exercise 3: Compute Measures of Central Tendency
+#Task: Calculate the mean of weight, median of ap_hi, and mode of gender.
+#########################################################################
+Solution:
+# Mean of weight
+mean_weight = df['weight'].mean()
+
+# Median of ap_hi
+median_ap_hi = df['ap_hi'].median()
+
+# Mode of gender (assuming 'sex' is the gender column)
+mode_gender = df['sex'].mode()[0]
+
+print(f"Mean Weight: {mean_weight}")
+print(f"Median Systolic BP: {median_ap_hi}")
+print(f"Mode of Gender: {mode_gender}")
+
+#Explanation:
+# Mean: Average value of the weight column.
+###########################################
+
+Median: Middle value of the ap_hi column, which is less affected by outliers.
+
+Mode: Most frequent value in the gender column (assuming sex represents gender).
+
+These measures provide insights into the distribution and central tendencies of the data.
+
+#Exercise 4: Compute Quantiles and Interquartile Range (IQR)
+#Task: Compute Q1, Q2 (median), Q3, and IQR for the cholesterol column.
+#######################################################################
+
+Solution:
+# Quantiles
+Q1 = df['cholesterol'].quantile(0.25)
+Q2 = df['cholesterol'].median()
+Q3 = df['cholesterol'].quantile(0.75)
+
+# IQR
+IQR = Q3 - Q1
+
+print(f"Q1: {Q1}, Q2 (Median): {Q2}, Q3: {Q3}")
+print(f"IQR: {IQR}")
+
+#Explanation:
+Quantiles: Divide the data into four equal parts. Q1 is the 25th percentile, Q2 is the median (50th percentile), and Q3 is the 75th percentile.
+
+IQR: The range between Q1 and Q3, representing the middle 50% of the data. It is useful for identifying outliers.
+
+#Exercise 5: Grouped Analysis by Gender ##############
+#Task: Calculate the mean of weight grouped by gender.
+######################################################
+
+Solution:
+mean_weight_by_gender = df.groupby('sex')['weight'].mean()
+print(mean_weight_by_gender)
+
+#Explanation:
+
+groupby('sex') groups the data by the gender column (assuming sex represents gender).
+
+mean() computes the average weight for each group.
+
+This helps in comparing the average weight between different genders.
+
+#Summary of All Tasks
+######################:
+Dataset Information: Used df.info() to display the structure and data types of the dataset.
+
+Min/Max Values: Calculated the range for height, weight, ap_hi, and ap_lo to understand data spread.
+
+Central Tendency: Computed mean, median, and mode for key columns to summarize data distribution.
+
+Quantiles and IQR: Analyzed the spread of cholesterol values using quartiles and IQR.
+
+Grouped Analysis: Compared average weight across genders using groupby and mean.
+
+These tasks provide a comprehensive overview of the dataset, including its structure, distribution, and key statistics, which are essential for further analysis or modeling.
+

@@ -56,3 +56,93 @@ Data columns (total 13 columns):
  12  cardio       70000 non-null  int64  
 dtypes: float64(1), int64(12)
 memory usage: 6.9 MB
+
+Exercise 2: Calculate Minimum and Maximum Values
+
+Question: Calculate the minimum and maximum values for the following columns:
+
+    "height"
+    "weight"
+    "ap_hi" (systolic blood pressure)
+    "ap_lo" (diasblood pressure)re)
+
+# Your code here:
+# Minimum values
+min_height = df['height'].min()
+min_weight = df['weight'].min()
+min_ap_hi = df['ap_hi'].min()
+min_ap_lo = df['ap_lo'].min()
+
+# Maximum values
+max_height = df['height'].max()
+max_weight = df['weight'].max()
+max_ap_hi = df['ap_hi'].max()
+max_ap_lo = df['ap_lo'].max()
+
+print("Minimum Values:")
+print(f"Height: {min_height}, Weight: {min_weight}, Systolic BP: {min_ap_hi}, Diastolic BP: {min_ap_lo}")
+print("\nMaximum Values:")
+print(f"Height: {max_height}, Weight: {max_weight}, Systolic BP: {max_ap_hi}, Diastolic BP: {max_ap_lo}")
+
+Minimum Values:
+Height: 55, Weight: 10.0, Systolic BP: -150, Diastolic BP: -70
+
+Maximum Values:
+Height: 250, Weight: 200.0, Systolic BP: 16020, Diastolic BP: 11000
+
+Exercise 3: Compute Measures of Central Tendency
+
+Question: Calculate the mean, median, and mode for the specified columns:
+
+    Mean: Compute the mean of the "weight" column.
+    Median: Compute the median of the "ap_hi" (systolic blood pressure) column.
+    Mode: Compute the mode of the "gender" column.
+
+# Your code here:
+# Mean of weight
+mean_weight = df['weight'].mean()
+
+# Median of ap_hi
+median_ap_hi = df['ap_hi'].median()
+
+# Mode of gender (assuming 'sex' is the gender column)
+mode_gender = df['sex'].mode()[0]
+
+print(f"Mean Weight: {mean_weight}")
+print(f"Median Systolic BP: {median_ap_hi}")
+print(f"Mode of Gender: {mode_gender}")
+
+Mean Weight: 74.20569
+Median Systolic BP: 120.0
+Mode of Gender: 1
+
+Exercise 4: Compute Quantiles and Interquartile Range (IQR)
+
+Question: Compute the Q1, Q2 (median), and Q3 for the "cholesterol" column and calculate the Interquartile Range (IQR).
+# Your code here:
+# Quantiles
+Q1 = df['cholesterol'].quantile(0.25)
+Q2 = df['cholesterol'].median()
+Q3 = df['cholesterol'].quantile(0.75)
+
+# IQR
+IQR = Q3 - Q1
+
+print(f"Q1: {Q1}, Q2 (Median): {Q2}, Q3: {Q3}")
+print(f"IQR: {IQR}")
+
+Q1: 1.0, Q2 (Median): 1.0, Q3: 2.0
+IQR: 1.0
+
+Exercise 5: Grouped Analysis by Gender
+
+Question: Calculate the mean of the "weight" column grouped by "gender".
+# Your code here:
+mean_weight_by_gender = df.groupby('sex')['weight'].mean()
+print(mean_weight_by_gender)
+
+sex
+1    72.565902
+2    77.258565
+3    69.818182
+Name: weight, dtype: float64
